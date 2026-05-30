@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TrackMySubs</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-card">
+      <div class="header">
+        <h3>TrackMySubs</h3>
+      </div>
+      <div id="status" class="status-msg"></div>
+      <form id="sub-form">
+        <div class="form-group">
+          <label for="name">Service Name</label>
+          <input type="text" id="name" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="price">Price ($)</label>
+            <input type="number" id="price" step="0.01" min="0" required />
+          </div>
+          <div class="form-group">
+            <label for="billingCycle">Cycle</label>
+            <select id="billingCycle">
+              <option value="weekly">Weekly</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="save-btn">Save Subscription</button>
+      </form>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
