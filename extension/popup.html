@@ -30,6 +30,30 @@
             </select>
           </div>
         </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Dev Tools">Dev Tools</option>
+            <option value="Health">Health</option>
+            <option value="Other" selected>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method</label>
+          <input type="text" id="paymentMethod" list="payment-options" placeholder="e.g. Visa 4242" />
+          <datalist id="payment-options">
+            <option value="Visa 4242"></option>
+            <option value="Mastercard 9999"></option>
+            <option value="PayPal"></option>
+            <option value="Cash/Unlinked"></option>
+          </datalist>
+        </div>
+        <div class="form-group checkbox-row">
+          <input type="checkbox" id="isTrial" />
+          <label for="isTrial">Is this a free trial?</label>
+        </div>
         <button type="submit" id="save-btn">Save Subscription</button>
       </form>
     </div>

@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const name = nameInput.value;
     const price = parseFloat(priceInput.value);
     const billingCycle = billingCycleSelect.value;
+    const category = document.getElementById('category').value;
+    const paymentMethod = document.getElementById('paymentMethod').value.trim() || 'Cash/Unlinked';
+    const isTrial = document.getElementById('isTrial').checked;
 
     const nextMonth = new Date();
     nextMonth.setMonth(nextMonth.getMonth() + 1);
@@ -55,6 +58,10 @@ document.addEventListener('DOMContentLoaded', async () => {
           price,
           billingCycle,
           nextRenewalDate,
+          category,
+          isTrial,
+          paymentMethod,
+          status: 'active'
         }),
       });
 
@@ -62,6 +69,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         statusDiv.className = 'status-msg success';
         statusDiv.textContent = 'Subscription saved successfully!';
         priceInput.value = '';
+        document.getElementById('category').value = 'Other';
+        document.getElementById('paymentMethod').value = '';
+        document.getElementById('isTrial').checked = false;
       } else {
         const errorData = await response.json();
         statusDiv.className = 'status-msg error';

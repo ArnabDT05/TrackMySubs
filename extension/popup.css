@@ -93,3 +93,24 @@ button {
 button:hover {
   opacity: 0.9;
 }
+
+.form-group.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group.checkbox-row input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.form-group.checkbox-row label {
+  text-transform: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #c5c6c7;
+  letter-spacing: 0;
+  cursor: pointer;
+}
