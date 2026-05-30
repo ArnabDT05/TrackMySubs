@@ -7,6 +7,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
   const [billingCycle, setBillingCycle] = useState('monthly');
   const [nextRenewalDate, setNextRenewalDate] = useState('');
   const [category, setCategory] = useState('Other');
+  const [isTrial, setIsTrial] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -30,6 +31,8 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
           billingCycle,
           nextRenewalDate,
           category,
+          isTrial,
+          status: 'active'
         }),
       });
 
@@ -39,6 +42,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
         setBillingCycle('monthly');
         setNextRenewalDate('');
         setCategory('Other');
+        setIsTrial(false);
         onSubscriptionAdded();
       } else {
         const data = await response.json();
@@ -108,6 +112,16 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
             <option value="Health">Health</option>
             <option value="Other">Other</option>
           </select>
+        </div>
+
+        <div className="form-group checkbox-group">
+          <input
+            id="sub-trial"
+            type="checkbox"
+            checked={isTrial}
+            onChange={(e) => setIsTrial(e.target.checked)}
+          />
+          <label htmlFor="sub-trial">Is this a free trial?</label>
         </div>
 
         <div className="form-group">

@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function CostCards({ subscriptions }) {
   const calculateTotals = () => {
-    const monthlyCosts = subscriptions.map((sub) => {
+    const activeSubs = subscriptions.filter(sub => sub.status !== 'paused');
+    const monthlyCosts = activeSubs.map((sub) => {
       const price = parseFloat(sub.price) || 0;
       if (sub.billingCycle === 'weekly') {
         return price * 4.33;

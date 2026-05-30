@@ -23,6 +23,15 @@ const subscriptionSchema = new mongoose.Schema({
     required: true,
     enum: ['Entertainment', 'Utilities', 'Dev Tools', 'Health', 'Other'],
     default: 'Other'
+  },
+  isTrial: {
+    type: Boolean,
+    default: false
+  },
+  status: {
+    type: String,
+    enum: ['active', 'paused'],
+    default: 'active'
   }
 });
 

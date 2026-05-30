@@ -31,7 +31,8 @@ export function CategoryDonutChart({ subscriptions }) {
       'Other': 0
     };
 
-    subscriptions.forEach((sub) => {
+    const activeSubs = subscriptions.filter(sub => sub.status !== 'paused');
+    activeSubs.forEach((sub) => {
       const price = parseFloat(sub.price) || 0;
       let monthlyEquivalent = price;
       
@@ -108,7 +109,8 @@ export function ForecastingLineChart({ subscriptions }) {
       
       let monthlyTotal = 0;
 
-      subscriptions.forEach((sub) => {
+      const activeSubs = subscriptions.filter(sub => sub.status !== 'paused');
+      activeSubs.forEach((sub) => {
         const price = parseFloat(sub.price) || 0;
         
         if (sub.billingCycle === 'weekly') {

@@ -5,13 +5,15 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { name, price, billingCycle, nextRenewalDate, category } = req.body;
+    const { name, price, billingCycle, nextRenewalDate, category, isTrial, status } = req.body;
     const subscription = new Subscription({
       name,
       price,
       billingCycle,
       nextRenewalDate,
-      category
+      category,
+      isTrial,
+      status
     });
     const savedSubscription = await subscription.save();
     res.status(201).json(savedSubscription);
@@ -31,10 +33,10 @@ router.get('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const { name, price, billingCycle, nextRenewalDate, category } = req.body;
+    const { name, price, billingCycle, nextRenewalDate, category, isTrial, status } = req.body;
     const updatedSubscription = await Subscription.findByIdAndUpdate(
       req.params.id,
-      { name, price, billingCycle, nextRenewalDate, category },
+      { name, price, billingCycle, nextRenewalDate, category, isTrial, status },
       { new: true, runValidators: true }
     );
     if (!updatedSubscription) {
