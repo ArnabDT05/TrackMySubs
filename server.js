@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import { initAlertWorker } from './services/alertWorker.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/health', (req, res) => {
 
 const startServer = async () => {
   await connectDB();
+  initAlertWorker();
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
