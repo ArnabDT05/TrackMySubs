@@ -412,3 +412,87 @@ tr:last-child td {
 .paused-row {
   opacity: 0.5;
 }
+
+.payment-aggregation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment-aggregation-section h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #8f9499;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.payment-scroll-wrapper {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.payment-scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.payment-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #2d3748;
+  border-radius: 4px;
+}
+
+.payment-micro-card {
+  background-color: #1f2833;
+  border: 1px solid #2d3748;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+
+.payment-micro-card:hover {
+  border-color: #66fcf1;
+}
+
+.payment-micro-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-micro-icon {
+  width: 16px;
+  height: 16px;
+  color: #66fcf1;
+}
+
+.payment-micro-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.payment-micro-amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #66fcf1;
+}
+
+.payment-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.payment-icon {
+  width: 16px;
+  height: 16px;
+  color: #8f9499;
+}

@@ -32,6 +32,10 @@ const subscriptionSchema = new mongoose.Schema({
     type: String,
     enum: ['active', 'paused'],
     default: 'active'
+  },
+  paymentMethod: {
+    type: String,
+    default: 'Cash/Unlinked'
   }
 });
 

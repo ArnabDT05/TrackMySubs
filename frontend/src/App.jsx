@@ -4,6 +4,7 @@ import SubscriptionForm from './components/SubscriptionForm';
 import CostCards from './components/CostCards';
 import SubscriptionList from './components/SubscriptionList';
 import { CategoryDonutChart, ForecastingLineChart } from './components/AnalyticsCharts';
+import PaymentAggregation from './components/PaymentAggregation';
 
 export default function App() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -42,6 +43,8 @@ export default function App() {
         </header>
 
         <CostCards subscriptions={subscriptions} />
+
+        <PaymentAggregation subscriptions={subscriptions} />
 
         <div className="analytics-grid">
           <CategoryDonutChart subscriptions={subscriptions} />

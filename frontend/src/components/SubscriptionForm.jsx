@@ -8,6 +8,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
   const [nextRenewalDate, setNextRenewalDate] = useState('');
   const [category, setCategory] = useState('Other');
   const [isTrial, setIsTrial] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState('Cash/Unlinked');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -32,7 +33,8 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
           nextRenewalDate,
           category,
           isTrial,
-          status: 'active'
+          status: 'active',
+          paymentMethod: paymentMethod.trim() || 'Cash/Unlinked'
         }),
       });
 
@@ -43,6 +45,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
         setNextRenewalDate('');
         setCategory('Other');
         setIsTrial(false);
+        setPaymentMethod('Cash/Unlinked');
         onSubscriptionAdded();
       } else {
         const data = await response.json();
@@ -112,6 +115,25 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
             <option value="Health">Health</option>
             <option value="Other">Other</option>
           </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="sub-payment">Payment Method</label>
+          <input
+            id="sub-payment"
+            type="text"
+            list="payment-options"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            placeholder="e.g. Visa 4242, PayPal"
+          />
+          <datalist id="payment-options">
+            <option value="Visa 4242" />
+            <option value="Mastercard 9999" />
+            <option value="PayPal" />
+            <option value="SBI Bank" />
+            <option value="Cash/Unlinked" />
+          </datalist>
         </div>
 
         <div className="form-group checkbox-group">

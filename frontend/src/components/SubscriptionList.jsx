@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, CreditCard } from 'lucide-react';
 
 export default function SubscriptionList({ subscriptions, onSubscriptionDeleted }) {
   const handleDelete = async (id) => {
@@ -73,6 +73,7 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
                 <th>Category</th>
                 <th>Price</th>
                 <th>Cycle</th>
+                <th>Payment</th>
                 <th>Next Renewal</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -100,6 +101,10 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
                       <span className={`badge ${sub.billingCycle}`}>
                         {sub.billingCycle}
                       </span>
+                    </td>
+                    <td className="payment-cell">
+                      <CreditCard className="payment-icon" />
+                      <span>{sub.paymentMethod || 'Cash/Unlinked'}</span>
                     </td>
                     <td>{formatDate(sub.nextRenewalDate)}</td>
                     <td>
