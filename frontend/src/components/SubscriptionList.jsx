@@ -37,6 +37,7 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
             <thead>
               <tr>
                 <th>Service</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Cycle</th>
                 <th>Next Renewal</th>
@@ -47,6 +48,7 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
               {subscriptions.map((sub) => (
                 <tr key={sub._id}>
                   <td className="sub-name-cell">{sub.name}</td>
+                  <td>{sub.category || 'Other'}</td>
                   <td>${parseFloat(sub.price).toFixed(2)}</td>
                   <td>
                     <span className={`badge ${sub.billingCycle}`}>

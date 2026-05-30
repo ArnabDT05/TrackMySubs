@@ -17,6 +17,12 @@ const subscriptionSchema = new mongoose.Schema({
   nextRenewalDate: {
     type: Date,
     required: true
+  },
+  category: {
+    type: String,
+    required: true,
+    enum: ['Entertainment', 'Utilities', 'Dev Tools', 'Health', 'Other'],
+    default: 'Other'
   }
 });
 

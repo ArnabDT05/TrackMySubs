@@ -6,6 +6,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
   const [price, setPrice] = useState('');
   const [billingCycle, setBillingCycle] = useState('monthly');
   const [nextRenewalDate, setNextRenewalDate] = useState('');
+  const [category, setCategory] = useState('Other');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -28,6 +29,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
           price: parseFloat(price),
           billingCycle,
           nextRenewalDate,
+          category,
         }),
       });
 
@@ -36,6 +38,7 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
         setPrice('');
         setBillingCycle('monthly');
         setNextRenewalDate('');
+        setCategory('Other');
         onSubscriptionAdded();
       } else {
         const data = await response.json();
@@ -90,6 +93,21 @@ export default function SubscriptionForm({ onSubscriptionAdded }) {
               <option value="yearly">Yearly</option>
             </select>
           </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="sub-category">Category</label>
+          <select
+            id="sub-category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Dev Tools">Dev Tools</option>
+            <option value="Health">Health</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         <div className="form-group">
