@@ -5,6 +5,7 @@ import CostCards from './components/CostCards';
 import SubscriptionList from './components/SubscriptionList';
 import { CategoryDonutChart, ForecastingLineChart } from './components/AnalyticsCharts';
 import PaymentAggregation from './components/PaymentAggregation';
+import NotificationBell from './components/NotificationBell';
 
 export default function App() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -40,6 +41,7 @@ export default function App() {
             <h1>Subscription Tracker</h1>
             <p>Monitor, optimize, and manage your recurring bills</p>
           </div>
+          <NotificationBell subscriptions={subscriptions} />
         </header>
 
         <CostCards subscriptions={subscriptions} />

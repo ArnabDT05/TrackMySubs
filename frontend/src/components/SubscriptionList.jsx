@@ -48,7 +48,7 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
     });
   };
 
-  const getTrialDaysRemaining = (renewalDateString) => {
+  const getDaysRemaining = (renewalDateString) => {
     if (!renewalDateString) return 0;
     const renewalDate = new Date(renewalDateString);
     const today = new Date();
@@ -81,18 +81,27 @@ export default function SubscriptionList({ subscriptions, onSubscriptionDeleted 
             </thead>
             <tbody>
               {subscriptions.map((sub) => {
-                const daysLeft = getTrialDaysRemaining(sub.nextRenewalDate);
+                const daysLeft = getDaysRemaining(sub.nextRenewalDate);
                 return (
                   <tr 
                     key={sub._id} 
                     className={sub.status === 'paused' ? 'paused-row' : ''}
                   >
                     <td className="sub-name-cell">
-                      <span className="sub-name-text">{sub.name}</span>
-                      {sub.isTrial && (
-                        <span className="trial-countdown-badge">
-                          Trial ends in {daysLeft}d
-                        </span>
+                      <div className="sub-name-wrapper">
+                        <span className="sub-name-text">{sub.name}</span>
+                        {sub.isTrial && (
+                          <span className="trial-badge">Trial</span>
+                        )}
+                      </div>
+                      {sub.status !== 'paused' && (
+                        daysLeft === 1 ? (
+                          <span className="renewal-countdown-badge critical">Renews Tomorrow</span>
+                        ) : daysLeft <= 3 ? (
+                          <span className="renewal-countdown-badge critical">Renews in {daysLeft} days</span>
+                        ) : (
+                          <span className="renewal-countdown-badge neutral">Renews in {daysLeft} days</span>
+                        )
                       )}
                     </td>
                     <td>{sub.category || 'Other'}</td>
